@@ -1,0 +1,35 @@
+{
+  "cart": {
+    "lines": [
+      {
+        "id": "gid://shopify/CartLine/1",
+        "quantity": 1,
+        "bestofmadamsew": { "value": "true" },
+        "merchandise": {
+          "__typename": "ProductVariant",
+          "id": "gid://shopify/ProductVariant/1001"
+        }
+      },
+      {
+        "id": "gid://shopify/CartLine/2",
+        "quantity": 1,
+        "bestofmadamsew": { "value": "true" },
+        "merchandise": {
+          "__typename": "ProductVariant",
+          "id": "gid://shopify/ProductVariant/1002"
+        }
+      }
+    ]
+  },
+  "discount": {
+    "discountClasses": ["PRODUCT"],
+    "metafield": {
+      "jsonValue": {
+        "allowedVariantIds": [
+          "gid://shopify/ProductVariant/1001",
+          "gid://shopify/ProductVariant/1002"
+        ]
+      }
+    }
+  }
+}

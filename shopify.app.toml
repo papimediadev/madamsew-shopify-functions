@@ -1,0 +1,25 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "777a69dc22105bd3c1849e60b6edb459"
+application_url = "https://shopify.dev/apps/default-app-home"
+embedded = true
+name = "Madam Sew Functions - P dev"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_discounts"
+
+[discount.metafields.app.config]
+type = "json"
+name = "Best of Madam Sew discount config"
+access.admin = "merchant_read_write"
+access.storefront = "none"
+
+[auth]
+redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+
+[webhooks]
+api_version = "2026-10"
+
+[build]
+automatically_update_urls_on_dev = true

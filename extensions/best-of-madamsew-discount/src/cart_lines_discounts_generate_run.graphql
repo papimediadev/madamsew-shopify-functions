@@ -1,0 +1,23 @@
+query CartInput {
+  cart {
+    lines {
+      id
+      quantity
+      bestofmadamsew: attribute(key: "_bestofmadamsew") {
+        value
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+    metafield(namespace: "$app", key: "config") {
+      jsonValue
+    }
+  }
+}

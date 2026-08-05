@@ -1,0 +1,21 @@
+api_version = "2026-01"
+uid = "1cb8881e-cdd8-1752-8a07-e4e5ce188bea0ce941cf"
+
+[[extensions]]
+name = "t:name"
+handle = "best-of-madamsew-discount"
+type = "function"
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "cart.lines.discounts.generate.run"
+  input_query = "src/cart_lines_discounts_generate_run.graphql"
+  export = "cart-lines-discounts-generate-run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui]
+  handle = "best-of-madamsew-discount-ui"
+  enable_create = true

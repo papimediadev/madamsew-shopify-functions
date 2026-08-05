@@ -1,0 +1,8 @@
+{
+  "name": "Best of Madam Sew Discount",
+  "description": "Tiered product discount for eligible Best of Madam Sew landing items. Each eligible product adds 5% off (max 25%). Requires line item property _bestofmadamsew: true from the landing page.",
+  "title": "Best of Madam Sew gamification discount",
+  "variantCountSuffix": "product variants are configured for this discount.",
+  "checkoutMessage": "Checkout discount message: BESTOFMADAMSEW",
+  "saveHint": "Save this discount to activate the function configuration."
+}

@@ -1,0 +1,13 @@
+mutation CreateBestOfMadamSewDiscount($automaticAppDiscount: DiscountAutomaticAppInput!) {
+  discountAutomaticAppCreate(automaticAppDiscount: $automaticAppDiscount) {
+    automaticAppDiscount {
+      discountId
+      title
+      status
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
