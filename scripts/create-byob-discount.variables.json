@@ -1,0 +1,21 @@
+{
+  "automaticAppDiscount": {
+    "title": "BYOB Discount",
+    "functionId": "REPLACE_AFTER_DEPLOY",
+    "startsAt": "2025-01-01T00:00:00",
+    "discountClasses": ["PRODUCT"],
+    "combinesWith": {
+      "orderDiscounts": false,
+      "productDiscounts": false,
+      "shippingDiscounts": true
+    },
+    "metafields": [
+      {
+        "namespace": "$app",
+        "key": "config",
+        "type": "json",
+        "value": "{}"
+      }
+    ]
+  }
+}

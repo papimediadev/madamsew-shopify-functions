@@ -1,0 +1,27 @@
+{
+  "cart": {
+    "lines": [
+      {
+        "id": "gid://shopify/CartLine/1",
+        "quantity": 2,
+        "bundleId": { "value": "bundle-pdp" },
+        "discount0": { "value": "10" },
+        "discount1": { "value": "15" },
+        "discount2": { "value": "20" },
+        "qty0": { "value": "2" },
+        "qty1": { "value": "4" },
+        "qty2": { "value": "6" },
+        "merchandise": {
+          "__typename": "ProductVariant",
+          "id": "gid://shopify/ProductVariant/1001",
+          "product": {
+            "id": "gid://shopify/Product/1001"
+          }
+        }
+      }
+    ]
+  },
+  "discount": {
+    "discountClasses": ["PRODUCT"]
+  }
+}

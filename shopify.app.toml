@@ -11,7 +11,7 @@ scopes = "write_discounts"
 
 [discount.metafields.app.config]
 type = "json"
-name = "Best of Madam Sew discount config"
+name = "Discount function config"
 access.admin = "merchant_read_write"
 access.storefront = "none"
 

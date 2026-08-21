@@ -1,0 +1,7 @@
+{
+  "name": "BYOB Discount",
+  "description": "10% at 5 items and 15% at 7 items for Build Your Own Bundle cart lines with type Bundle Product.",
+  "title": "BYOB bundle discount",
+  "checkoutMessage": "Checkout discount message: BYOB Bundle",
+  "saveHint": "Save this discount to activate the function. No additional configuration is required."
+}

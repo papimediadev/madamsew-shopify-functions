@@ -1,0 +1,28 @@
+query CartInput {
+  cart {
+    lines {
+      id
+      quantity
+      bundleType: attribute(key: "type") {
+        value
+      }
+      bundleTypeAlt: attribute(key: "Type") {
+        value
+      }
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+  }
+}

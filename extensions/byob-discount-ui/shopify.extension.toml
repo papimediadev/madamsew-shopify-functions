@@ -1,0 +1,15 @@
+api_version = "2026-01"
+[[extensions]]
+name = "t:name"
+description = "t:description"
+handle = "byob-discount-ui"
+uid = "d6a1f5a4-2e7b-7c0d-1f4a-5b8e9f0a1b2c"
+type = "ui_extension"
+
+[[extensions.targeting]]
+module = "./src/DiscountFunctionSettings.jsx"
+target = "admin.discount-details.function-settings.render"
+
+[[extensions.metafields]]
+namespace = "$app"
+key = "config"

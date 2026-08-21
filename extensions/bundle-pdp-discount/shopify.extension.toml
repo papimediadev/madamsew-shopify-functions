@@ -1,0 +1,21 @@
+api_version = "2026-01"
+uid = "a3f8c2d1-9b4e-4f7a-8c1d-2e5b6a7c8d9e"
+
+[[extensions]]
+name = "t:name"
+handle = "bundle-pdp-discount"
+type = "function"
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "cart.lines.discounts.generate.run"
+  input_query = "src/cart_lines_discounts_generate_run.graphql"
+  export = "cart-lines-discounts-generate-run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui]
+  handle = "bundle-pdp-discount-ui"
+  enable_create = true

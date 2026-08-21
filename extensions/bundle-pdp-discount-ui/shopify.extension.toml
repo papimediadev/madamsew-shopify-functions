@@ -1,0 +1,15 @@
+api_version = "2026-01"
+[[extensions]]
+name = "t:name"
+description = "t:description"
+handle = "bundle-pdp-discount-ui"
+uid = "c5f0e4f3-1d6a-6b9c-0e3f-4a7d8e9f0a1b"
+type = "ui_extension"
+
+[[extensions.targeting]]
+module = "./src/DiscountFunctionSettings.jsx"
+target = "admin.discount-details.function-settings.render"
+
+[[extensions.metafields]]
+namespace = "$app"
+key = "config"

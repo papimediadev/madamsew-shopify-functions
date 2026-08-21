@@ -1,0 +1,7 @@
+{
+  "name": "Bundle PDP Discount",
+  "description": "Tiered product discount for Buy more, Save more PDP bundles. Reads bundle_id and tier properties from cart line items.",
+  "title": "Bundle PDP discount",
+  "checkoutMessage": "Checkout discount message: Bundle PDP",
+  "saveHint": "Save this discount to activate the function. No additional configuration is required."
+}

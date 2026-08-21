@@ -1,0 +1,27 @@
+{
+  "cart": {
+    "lines": [
+      {
+        "id": "gid://shopify/CartLine/1",
+        "quantity": 3,
+        "bundleType": { "value": "Bundle Product" },
+        "merchandise": {
+          "__typename": "ProductVariant",
+          "id": "gid://shopify/ProductVariant/2001"
+        }
+      },
+      {
+        "id": "gid://shopify/CartLine/2",
+        "quantity": 2,
+        "bundleType": { "value": "Bundle Product" },
+        "merchandise": {
+          "__typename": "ProductVariant",
+          "id": "gid://shopify/ProductVariant/2002"
+        }
+      }
+    ]
+  },
+  "discount": {
+    "discountClasses": ["PRODUCT"]
+  }
+}
