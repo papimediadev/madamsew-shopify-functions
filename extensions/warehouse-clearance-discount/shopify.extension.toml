@@ -1,0 +1,21 @@
+api_version = "2026-01"
+uid = "91ab93ed-b659-422f-96ea-91b8a9aac24e"
+
+[[extensions]]
+name = "t:name"
+handle = "warehouse-clearance-discount"
+type = "function"
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "cart.lines.discounts.generate.run"
+  input_query = "src/cart_lines_discounts_generate_run.graphql"
+  export = "cart-lines-discounts-generate-run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui]
+  handle = "warehouse-clearance-discount-ui"
+  enable_create = true

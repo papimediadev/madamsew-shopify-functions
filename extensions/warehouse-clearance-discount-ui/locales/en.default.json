@@ -1,0 +1,8 @@
+{
+  "name": "Warehouse Clearance Discount",
+  "description": "Tiered product discount for eligible Warehouse Clearance landing items. Each eligible product adds 5% off (max 25%). Requires line item property _warehouseclearance: true from the landing page.",
+  "title": "Warehouse Clearance gamification discount",
+  "variantCountSuffix": "product variants are configured for this discount.",
+  "checkoutMessage": "Checkout discount message: WAREHOUSECLEARANCE",
+  "saveHint": "Save this discount to activate the function configuration."
+}

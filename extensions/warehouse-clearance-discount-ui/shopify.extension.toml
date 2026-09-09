@@ -1,0 +1,14 @@
+api_version = "2026-01"
+[[extensions]]
+name = "t:name"
+description = "t:description"
+handle = "warehouse-clearance-discount-ui"
+uid = "845c14a5-5ab7-40a9-9333-74bb716bbcff"
+type = "ui_extension"
+[[extensions.targeting]]
+module = "./src/DiscountFunctionSettings.jsx"
+target = "admin.discount-details.function-settings.render"
+
+[[extensions.metafields]]
+namespace = "$app"
+key = "config"
