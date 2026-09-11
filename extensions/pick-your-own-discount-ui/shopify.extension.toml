@@ -1,0 +1,14 @@
+api_version = "2026-01"
+[[extensions]]
+name = "t:name"
+description = "t:description"
+handle = "pick-your-own-discount-ui"
+uid = "2d84032a-19c3-49b3-9247-438ef3a85c5e"
+type = "ui_extension"
+[[extensions.targeting]]
+module = "./src/DiscountFunctionSettings.jsx"
+target = "admin.discount-details.function-settings.render"
+
+[[extensions.metafields]]
+namespace = "$app"
+key = "config"

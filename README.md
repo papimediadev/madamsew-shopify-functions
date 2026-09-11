@@ -75,6 +75,54 @@ shopify app dev
 
 Bundle excluded: `best-of-madam-sew-favourite-tools-with-3-light-pink-project-bags`
 
+### `pick-your-own-discount`
+
+Automatic product discount for the Pick Your Own landing (`/pages/pick-your-own`).
+
+#### Business rules
+
+- Applies only to cart lines with line item property `_pickyourown = true`.
+- Sets each eligible unit to **$9.90 USD**. Products already at or below $9.90 are skipped.
+- Does not use a hardcoded product list. The merchant updates products in the landing HTML; the theme stamps the property only on that page.
+- Optional `allowedVariantIds` in config can lock the discount to specific variants. Empty means any product added from the landing.
+- Checkout line discount message: `PICKYOUROWN`
+
+#### Theme contract
+
+The theme adds `_pickyourown: true` only on `/pages/pick-your-own` (including localized paths like `/en-ca/pages/pick-your-own`). The same product added from PDP or another page keeps catalog price.
+
+#### Discount configuration metafield
+
+Namespace: `$app:pick-your-own-discount`  
+Key: `config`
+
+Example value: see `extensions/pick-your-own-discount/config/discount-config.example.json`.
+
+#### Local development
+
+```bash
+cd extensions/pick-your-own-discount
+npm install
+npm run typegen
+npm test
+npm run build
+```
+
+#### Create automatic discount in Shopify Admin
+
+1. Deploy the extension (`shopify app deploy`).
+2. Create an automatic app discount using the `pick-your-own-discount` function.
+3. Set discount class to **Product**.
+4. Save the function configuration metafield (`targetPrice: "9.90"`, `currencyCodes: ["USD"]`).
+
+Or after deploy:
+
+```bash
+export PICK_YOUR_OWN_FUNCTION_ID='gid://shopify/ShopifyFunction/...'
+# then set functionId in scripts/create-pick-your-own-discount.variables.json
+bash scripts/create-pick-your-own-discount.sh madamsew
+```
+
 ### `warehouse-clearance-discount`
 
 Automatic product discount for the Warehouse Clearance A/B test landing (`/pages/warehouse-clearance-sale-2026`).

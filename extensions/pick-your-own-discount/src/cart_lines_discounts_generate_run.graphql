@@ -1,0 +1,32 @@
+query CartInput {
+  cart {
+    lines {
+      id
+      quantity
+      pickyourown: attribute(key: "_pickyourown") {
+        value
+      }
+      cost {
+        amountPerQuantity {
+          amount
+          currencyCode
+        }
+        subtotalAmount {
+          amount
+        }
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+    metafield(namespace: "$app", key: "config") {
+      jsonValue
+    }
+  }
+}
