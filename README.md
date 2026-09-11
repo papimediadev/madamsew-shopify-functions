@@ -75,6 +75,62 @@ shopify app dev
 
 Bundle excluded: `best-of-madam-sew-favourite-tools-with-3-light-pink-project-bags`
 
+### `warehouse-clearance-discount`
+
+Automatic product discount for the Warehouse Clearance A/B test landing (`/pages/warehouse-clearance-sale-2026`).
+
+#### Business rules
+
+- Applies only to cart lines with line item property `_warehouseclearance = true`.
+- Applies only to configured eligible variant IDs from the landing (25 products / all of their variants).
+- Discount tier is based on total eligible quantity in cart:
+  - 1 item → 5%
+  - 2 items → 10%
+  - 3 items → 15%
+  - 4 items → 20%
+  - 5+ items → 25% on each eligible line
+- Checkout line discount message: `WAREHOUSECLEARANCE`
+
+#### Theme contract
+
+The theme adds `_warehouseclearance: true` only when Intelligems adds `body.warehouseclearance-gamification-enabled` on the landing page.
+
+#### Discount configuration metafield
+
+Namespace: `$app:warehouse-clearance-discount`  
+Key: `config`
+
+Example value: see `extensions/warehouse-clearance-discount/config/discount-config.example.json`.
+
+#### Local development
+
+```bash
+cd extensions/warehouse-clearance-discount
+npm install
+npm run typegen
+npm test
+npm run build
+```
+
+#### Create automatic discount in Shopify Admin
+
+1. Deploy the extension (`shopify app deploy`).
+2. Create an automatic app discount using the `warehouse-clearance-discount` function.
+3. Set discount class to **Product**.
+4. Save the function configuration metafield with the allowed variant IDs.
+
+Or after deploy:
+
+```bash
+export WAREHOUSE_CLEARANCE_FUNCTION_ID='gid://shopify/ShopifyFunction/...'
+# then set functionId in scripts/create-warehouse-clearance-discount.variables.json
+bash scripts/create-warehouse-clearance-discount.sh madamsew
+```
+
+#### Intelligems
+
+Add body class `warehouseclearance-gamification-enabled` on the treatment variant of `/pages/warehouse-clearance-sale-2026`.
+
 ### `bundle-pdp-discount`
 
 Automatic product discount for Buy more, Save more bundles on PDP (`snippets/bundle-pdp.liquid`).

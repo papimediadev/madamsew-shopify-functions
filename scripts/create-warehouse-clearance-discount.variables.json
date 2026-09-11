@@ -1,0 +1,21 @@
+{
+  "automaticAppDiscount": {
+    "title": "Warehouse Clearance Discount",
+    "functionId": "REPLACE_AFTER_DEPLOY",
+    "startsAt": "2025-01-01T00:00:00",
+    "discountClasses": ["PRODUCT"],
+    "combinesWith": {
+      "orderDiscounts": false,
+      "productDiscounts": false,
+      "shippingDiscounts": true
+    },
+    "metafields": [
+      {
+        "namespace": "$app",
+        "key": "config",
+        "type": "json",
+        "value": "{\"allowedVariantIds\":[\"gid://shopify/ProductVariant/41215347359795\",\"gid://shopify/ProductVariant/41215357321267\",\"gid://shopify/ProductVariant/41215327961139\",\"gid://shopify/ProductVariant/41215327993907\",\"gid://shopify/ProductVariant/42968729878579\",\"gid://shopify/ProductVariant/42968791842867\",\"gid://shopify/ProductVariant/42968792399923\",\"gid://shopify/ProductVariant/41508118102067\",\"gid://shopify/ProductVariant/32755324256307\",\"gid://shopify/ProductVariant/39532157468723\",\"gid://shopify/ProductVariant/39532157435955\",\"gid://shopify/ProductVariant/46530510664\",\"gid://shopify/ProductVariant/47409486664\",\"gid://shopify/ProductVariant/32537066012723\",\"gid://shopify/ProductVariant/41391691169843\",\"gid://shopify/ProductVariant/31298946400307\",\"gid://shopify/ProductVariant/39471935946803\",\"gid://shopify/ProductVariant/39627185586227\",\"gid://shopify/ProductVariant/40592047800371\",\"gid://shopify/ProductVariant/40007485784115\",\"gid://shopify/ProductVariant/42537476128819\",\"gid://shopify/ProductVariant/42968787353651\",\"gid://shopify/ProductVariant/40294487228467\",\"gid://shopify/ProductVariant/40342227091507\",\"gid://shopify/ProductVariant/42815601180723\",\"gid://shopify/ProductVariant/42815601213491\",\"gid://shopify/ProductVariant/41360775348275\",\"gid://shopify/ProductVariant/41360807002163\",\"gid://shopify/ProductVariant/41360807591987\",\"gid://shopify/ProductVariant/41373176758323\"]}"
+      }
+    ]
+  }
+}
