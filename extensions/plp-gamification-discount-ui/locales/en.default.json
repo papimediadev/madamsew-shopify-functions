@@ -1,0 +1,7 @@
+{
+  "name": "PLP Gamification Discount",
+  "description": "Tiered product discount for any item added from a collection page during the PLP test. Each product adds 5% off (max 25%). Requires line item property _plpgamification: true.",
+  "title": "PLP gamification discount",
+  "checkoutMessage": "Checkout discount message: PLPGAMIFICATION",
+  "saveHint": "Save this discount to activate it. It applies to every product added from a collection while the test is on."
+}

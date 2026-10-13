@@ -1,0 +1,21 @@
+api_version = "2026-01"
+uid = "cad32171-a82e-405a-9835-6fa250eb8fd9"
+
+[[extensions]]
+name = "t:name"
+handle = "plp-gamification-discount"
+type = "function"
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "cart.lines.discounts.generate.run"
+  input_query = "src/cart_lines_discounts_generate_run.graphql"
+  export = "cart-lines-discounts-generate-run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui]
+  handle = "plp-gamification-discount-ui"
+  enable_create = true

@@ -1,0 +1,14 @@
+api_version = "2026-01"
+[[extensions]]
+name = "t:name"
+description = "t:description"
+handle = "plp-gamification-discount-ui"
+uid = "f3ca54ab-fc3d-4b07-b9f7-73e3cd1f4d2f"
+type = "ui_extension"
+[[extensions.targeting]]
+module = "./src/DiscountFunctionSettings.jsx"
+target = "admin.discount-details.function-settings.render"
+
+[[extensions.metafields]]
+namespace = "$app"
+key = "config"
