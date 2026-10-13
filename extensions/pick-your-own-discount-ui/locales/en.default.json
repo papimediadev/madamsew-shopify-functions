@@ -1,0 +1,9 @@
+{
+  "name": "Pick Your Own Discount",
+  "description": "Sets products added from /pages/pick-your-own to $9.90. Requires line item property _pickyourown: true. Other pages keep catalog price.",
+  "title": "Pick Your Own $9.90 discount",
+  "pageHint": "Applies only to cart lines added from /pages/pick-your-own.",
+  "priceHint": "Target price: $9.90 USD per unit. Products already at or below $9.90 are skipped.",
+  "checkoutMessage": "Checkout discount message: PICKYOUROWN",
+  "saveHint": "Save this discount to activate the function configuration."
+}
