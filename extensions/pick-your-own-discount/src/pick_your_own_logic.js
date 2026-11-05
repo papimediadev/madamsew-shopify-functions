@@ -7,6 +7,7 @@ export const PROPERTY_VALUE = 'true';
 export const DISCOUNT_MESSAGE = 'PICKYOUROWN';
 export const DEFAULT_TARGET_PRICE = '9.90';
 export const DEFAULT_CURRENCY_CODES = ['USD'];
+export const MIN_DISTINCT_LINES = 10;
 
 /**
  * @typedef {{
@@ -45,19 +46,26 @@ export function parseConfig(configValue) {
 }
 
 /**
- * @param {{
+ * @typedef {{
+ *   id: string,
+ *   quantity?: number,
  *   pickyourown?: { value?: string | null } | null,
  *   cost?: {
  *     amountPerQuantity?: { amount?: string | null, currencyCode?: string | null } | null
  *   } | null,
- *   merchandise?: { __typename?: string, id?: string } | null
- * }} line
+ *   merchandise?: { __typename?: string, id?: string, sku?: string | null } | null
+ * }} PickYourOwnLine
+ */
+
+/**
+ * @param {PickYourOwnLine} line
  * @param {PickYourOwnConfig} config
  */
 export function isEligibleLine(line, config) {
   if (line.pickyourown?.value !== PROPERTY_VALUE) return false;
   if (line.merchandise?.__typename !== 'ProductVariant') return false;
   if (!line.merchandise.id) return false;
+  if (moneyAmountToCents(line.cost?.amountPerQuantity?.amount) <= 0) return false;
 
   if (
     config.allowedVariantIds.length &&
@@ -79,28 +87,46 @@ export function isEligibleLine(line, config) {
 }
 
 /**
- * @param {{
- *   quantity?: number,
- *   cost?: {
- *     amountPerQuantity?: { amount?: string | null } | null,
- *     subtotalAmount?: { amount?: string | null } | null
- *   } | null
- * }} line
+ * Only one unit per line gets the target price; extra units stay at full price.
+ *
+ * @param {PickYourOwnLine} line
  * @param {string} targetPrice
  */
 export function getLineDiscountCents(line, targetPrice) {
-  const quantity = line.quantity || 0;
-  if (quantity <= 0) return 0;
+  if ((line.quantity || 0) <= 0) return 0;
 
   const targetCents = moneyAmountToCents(targetPrice);
   const unitCents = moneyAmountToCents(line.cost?.amountPerQuantity?.amount);
 
-  if (unitCents > 0) {
-    return Math.max(0, (unitCents - targetCents) * quantity);
-  }
+  return Math.max(0, unitCents - targetCents);
+}
 
-  const subtotalCents = moneyAmountToCents(line.cost?.subtotalAmount?.amount);
-  return Math.max(0, subtotalCents - targetCents * quantity);
+/**
+ * @param {PickYourOwnLine} line
+ */
+export function getLineSkuKey(line) {
+  const sku = line.merchandise?.sku?.trim();
+  return sku ? `sku:${sku.toUpperCase()}` : `variant:${line.merchandise?.id}`;
+}
+
+/**
+ * First eligible line per SKU, in cart order. Later lines with the same SKU are dropped.
+ *
+ * @param {PickYourOwnLine[]} lines
+ * @param {PickYourOwnConfig} config
+ */
+export function selectQualifyingLines(lines, config) {
+  const seen = new Set();
+
+  return lines.filter((line) => {
+    if (!isEligibleLine(line, config)) return false;
+
+    const key = getLineSkuKey(line);
+    if (seen.has(key)) return false;
+
+    seen.add(key);
+    return true;
+  });
 }
 
 /**
@@ -122,21 +148,14 @@ export function buildFixedAmountCandidate(lineId, discountCents) {
 }
 
 /**
- * @param {Array<{
- *   id: string,
- *   quantity?: number,
- *   pickyourown?: { value?: string | null } | null,
- *   cost?: {
- *     amountPerQuantity?: { amount?: string | null, currencyCode?: string | null } | null,
- *     subtotalAmount?: { amount?: string | null } | null
- *   } | null,
- *   merchandise?: { __typename?: string, id?: string } | null
- * }>} lines
+ * @param {PickYourOwnLine[]} lines
  * @param {PickYourOwnConfig} config
  */
 export function buildDiscountCandidates(lines, config) {
-  return lines
-    .filter((line) => isEligibleLine(line, config))
+  const qualifyingLines = selectQualifyingLines(lines, config);
+  if (qualifyingLines.length < MIN_DISTINCT_LINES) return [];
+
+  return qualifyingLines
     .map((line) =>
       buildFixedAmountCandidate(line.id, getLineDiscountCents(line, config.targetPrice)),
     )

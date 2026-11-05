@@ -11,14 +11,12 @@ query CartInput {
           amount
           currencyCode
         }
-        subtotalAmount {
-          amount
-        }
       }
       merchandise {
         __typename
         ... on ProductVariant {
           id
+          sku
         }
       }
     }
